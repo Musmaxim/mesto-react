@@ -10,4 +10,6 @@
     text-rendering: optimizeLegibility;
     background: #000000;
     margin: auto;
+    overflow-x: hidden;
+
 }

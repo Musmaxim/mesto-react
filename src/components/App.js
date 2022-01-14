@@ -51,7 +51,7 @@ function App() {
     </div>
 
 
-    <PopupWithForm title="Редактировать профиль" name="profile"
+    <PopupWithForm title="Редактировать профиль" name="profile" buttonText="Сохранить"
         isOpen={isEditProfilePopupOpen} 
         onClose={closeAllPopups}>
             <fieldset className="form__fieldset">
@@ -62,11 +62,9 @@ function App() {
                 id="input_work" minLength="2" maxLength="200" required autoComplete="off"/>
                 <span className="form__item-error" id="input_work-error"></span>
             </fieldset>
-                <button className="form__button" type="submit">Сохранить
-                </button>
     </PopupWithForm>
 
-    <PopupWithForm title="Обновить аватар" name="avatar"
+    <PopupWithForm title="Обновить аватар" name="avatar" buttonText="Сохранить"
         isOpen={isEditAvatarPopupOpen}
         onClose={closeAllPopups}>
                 <fieldset className="form__fieldset">
@@ -74,10 +72,9 @@ function App() {
                     <input type="url" name="avatar_url" placeholder="Ссылка на аватар" className=" form__item form__item_el_url" id="input_avatar" required autoComplete="off"/>
                     <span className="form__item-error" id="input_avatar-error"></span>
                 </fieldset>
-                <button className="form__button" type="submit">Сохранить</button>
     </PopupWithForm>
 
-    <PopupWithForm title="Новое место" name="add-cards"
+    <PopupWithForm title="Новое место" name="add-cards" buttonText="Создать"
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}>
             <fieldset className="form__fieldset">
@@ -86,8 +83,6 @@ function App() {
                 <input type="url" name="link" placeholder="Ссылка на картинку" className="form__item form__item_el_img" id="input_img" required autoComplete="off"/>
                 <span className="form__item-error" id="input_img-error"></span>
             </fieldset>
-            <button className="form__button" type="submit">Создать
-                </button>
     </PopupWithForm>
 
     <ImagePopup 

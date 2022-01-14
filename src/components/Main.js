@@ -20,7 +20,7 @@ react.useEffect(() => {
         setCards(dataCards);
     })
     .catch((err) => {console.log(err);
-    });
+    }, []);
 })
 
 
