@@ -39,6 +39,7 @@ function App() {
 
     return (
     <>
+    <div className="body">
     <div className="page">
         <Header />
         <Main 
@@ -48,6 +49,7 @@ function App() {
         onCardClick={handleCardClick}
         />
         <Footer />
+    </div>
     </div>
 
 
