@@ -69,15 +69,34 @@ class Api {
             this._baseUrl + "cards/" + id,
             Object.assign(this._config, {
                 method: "DELETE",
+                headers: this._headers
             })
         ).then(Api.checkResponse);
     }
 
-    likeCard(id, like = true) {
-        return fetch(
+    putCardLike(id) {
+        return fetch (
             this._baseUrl + "cards/likes/" + id,
             Object.assign(this._config, {
-                method: like ? "PUT" : "DELETE",
+                method: "PUT",
+            })
+        ).then(Api.checkResponse);
+    }
+
+    deleteCardLike(id) {
+        return fetch (
+            this._baseUrl + "cards/likes/" + id,
+            Object.assign(this._config, {
+                method: "DELETE",
+            })
+        ).then(Api.checkResponse);
+    }
+
+    likeCard(cardid, isliked) {
+        return fetch(
+            this._baseUrl + "cards/likes/" + cardid,
+            Object.assign(this._config, {
+                method: isliked ? "PUT" : "DELETE",
             })
         ).then(Api.checkResponse);
     }

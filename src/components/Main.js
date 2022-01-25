@@ -1,41 +1,23 @@
 import pencil from '../images/Pencil.svg';
-import {api} from '../utils/api';
-import react from 'react';
+import React from 'react';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
+function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete}) {
 
-
-    const[userName, setUserName]=react.useState(" ");
-    const[userDescription, setUserDescription]=react.useState(" ");
-    const[userAvatar, setUserAvatar]=react.useState(" ");
-    const[cards, setCards]=react.useState([ ]);
-
-react.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-    .then(([dataUser, dataCards]) =>{
-        setUserName(dataUser.name);
-        setUserDescription(dataUser.about);
-        setUserAvatar(dataUser.avatar);
-        setCards(dataCards);
-    })
-    .catch((err) => {console.log(err);
-    }, []);
-})
-
-
+    const currentUser = React.useContext(CurrentUserContext);
 
     return (<>
         <main className="content">
             <section className="profile">
                 <div className="info">
-                    <div className="info__photo" style={{ backgroundImage: `url(${userAvatar})` }} >
+                    <div className="info__photo" style={{ backgroundImage: `url(${currentUser.avatar})` }} >
                         <img className="info__photo-edit" src={pencil}  alt="Обновить аватар" onClick={onEditAvatar}/>
                     </div>
-                    <h1 className="info__name">{userName}</h1>
+                    <h1 className="info__name">{currentUser.name}</h1>
                     <button className="info__edit" type="button" onClick={onEditProfile}>
                     </button>
-                    <p className="info__work">{userDescription}</p>
+                    <p className="info__work">{currentUser.about}</p>
                 </div>
                 <button className="button" type="button" onClick={onAddPlace}>
                 </button>
@@ -48,7 +30,9 @@ react.useEffect(() => {
                     name={card.name} 
                     link={card.link} 
                     likes={card.likes.length} 
-                    onCardClick={onCardClick}/>
+                    onCardClick={onCardClick}
+                    onCardLike={onCardLike}
+                    onCardDelete={onCardDelete}/>
                 })}
             </section>
         </main>
